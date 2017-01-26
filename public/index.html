@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+	<head>
+		<title>GoblinDB + Socket.IO</title>
+	</head>
+	<body>
+		
+		<h1>GoblinDB Socket interface ^^</h1>
+
+		<p>This is an example for Real Time Goblin Interface. It is just a real time counter, in honor to josherif.</p>
+
+		<h2 id="count"></h2>
+
+		<button id="sum">+1</button>
+		<button id="less">-1</button>
+
+		<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+
+		<script src="js/goblin-socket.js"></script>
+
+		<script type="text/javascript">
+			/* -- Implementation -- */
+
+			var gdb = new Goblin();
+
+			var counter = 0;
+
+			gdb.get('counter', function(data) {
+				counter = data;
+				document.getElementById('count').innerHTML = counter;
+			});
+
+			gdb.on('change', function(data) {
+				counter = data.value.counter;
+				document.getElementById('count').innerHTML = counter;
+			});
+
+			// document.getElementById('count').innerHTML = counter;
+
+			document.getElementById('sum').addEventListener('click', add);
+			document.getElementById('less').addEventListener('click', less);
+
+
+			function add() {
+				gdb.set({'counter': counter + 1});
+			}
+
+			function less() {
+				gdb.set({'counter': counter - 1});
+			}
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "goblinsocket",
+  "version": "0.0.1",
+  "description": "WebSocket interface for GoblinDB using SocketIO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodingCarlos/GoblinSocket/"
+  },
+  "author": "Carlos Hernandez Martin",
+  "license": "MIT",
+  "dependencies": {
+    "goblindb": "0.0.3",
+    "pillars": "0.4.2",
+    "socketio": "1.0.0"
+  }
+}
