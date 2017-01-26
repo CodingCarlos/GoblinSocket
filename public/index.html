@@ -21,32 +21,54 @@
 		<script type="text/javascript">
 			/* -- Implementation -- */
 
+			// Initialize GoblinDB
 			var gdb = new Goblin();
 
+			// Counter variable
 			var counter = 0;
 
+			// Get the database value of counter
 			gdb.get('counter', function(data) {
+
+				// Update the local counter
 				counter = data;
-				document.getElementById('count').innerHTML = counter;
+
+				// And print the value
+				printCounter();
 			});
 
+			// Listen database changes. On change:
 			gdb.on('change', function(data) {
+
+				// Update the local counter
 				counter = data.value.counter;
-				document.getElementById('count').innerHTML = counter;
+				
+				// And print the value
+				printCounter();
 			});
+			
 
-			// document.getElementById('count').innerHTML = counter;
-
+			// Listen button clicks, and call the add and less functions
 			document.getElementById('sum').addEventListener('click', add);
 			document.getElementById('less').addEventListener('click', less);
 
 
-			function add() {
-				gdb.set({'counter': counter + 1});
+			// Print on screen the value of counter variable
+			function printCounter() {
+				document.getElementById('count').innerHTML = counter;	
 			}
 
+
+			// Send +1 to the database
+			function add() {
+				var newCounter = counter + 1;
+				gdb.set({'counter': newCounter});
+			}
+
+			// Send -1 to the database
 			function less() {
-				gdb.set({'counter': counter - 1});
+				var newCounter = counter + 1;
+				gdb.set({'counter': newCounter});
 			}
 
 		</script>
