@@ -13,7 +13,7 @@
   "author": "Carlos Hernandez Martin",
   "license": "MIT",
   "dependencies": {
-    "goblindb": "0.0.3",
+    "goblindb": "0.0.4",
     "pillars": "0.4.2",
     "socketio": "1.0.0"
   }
